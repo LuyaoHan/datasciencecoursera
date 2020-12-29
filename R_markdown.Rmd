@@ -9,19 +9,12 @@ output: html_document
 ~~strikethrough~~
 [baidu](www.baidu.com)
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
 
 ## Including Plots
 
@@ -32,3 +25,109 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## R Data Types and Attributes
+**character** 
+
+**numeric(real numbers)**
+
+**integer**
+
+**complex**
+
+**logical(True/False)**
+
+All things we encountered in R is an object. These five data types comprises the atomic classes of objects. 
+The most basic object is a vector. It can contain multiple copies of multiple types of objects. 
+
+Empty vectors can be created with **vector()** function
+
+**list** is a special vector that can contain mulitple types of classes (character, integer, complex...)
+
+
+# Numbers
+Numbers are always thought as real numbers 
+If you specifically want an integer, you need to specify the L suffix.
+
+**Inf** is 1/0
+
+1 / **Inf** is 0 
+
+**Nan** stands for Not a number
+
+## Creating Vectors
+
+The **c()** function can be used to create vectors of objects
+
+x <- c(0.5, 0.6)
+
+x <- c(True, False)
+
+x <- c(T,F)
+
+x <- c('a','b','c')
+
+x <- 9:29
+
+x <- c(1+0i, 2+4i)    
+
+### Using the Vector function
+x <- vector("numeric", length = 10)
+```{r}
+x <- vector("numeric", length = 10)
+print(x)
+```
+
+### Create a vector and mixing two types of objects (not recommended: **Inplicit Type Coercion Happens!**)
+```{r}
+y <- c(1.7,"a")
+print(y)
+```
+In above, number is coerced into all string
+
+
+
+```{r}
+y <- c(TRUE,2)
+print(y)
+```
+In above logic is coerced into all integer
+
+
+```{r}
+y <-c("a",TRUE) 
+print(y)
+```
+In above, logic is coerced into string
+
+
+## Explicit Type Coercion (Class Conversion)
+```{r}
+x <- 0:6
+class(x)
+as.numeric(x)
+as.logical(x)
+as.character(x)
+```
+
+### Coercion will not always work
+```{r}
+x <- c("a","b","c")
+as.numeric(x)
+as.logical(x)
+as.complex(x)
+```
+
+
+
+
+## Lists
+Lists are a special type of vector **can** contain elements of different class(or type). 
+```{r}
+x <- list(1, "a",TRUE, 1+4i)
+x
+```
+It doesn't print out like a vector. 
+'''
+
